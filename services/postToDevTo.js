@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 	});
 
 	// Send the payload and create a new article
-	const options = { method: 'post', timeout: 1500, headers, body };
+	const options = { method: 'post', timeout: 10000, headers, body };
 	const response = await fetch(devToEndpoint, options);
 
 	// Do error handlung
