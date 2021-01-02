@@ -12,4 +12,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Initialize services
 app.use('/post/devto', postToDevTo)
 
-app.listen(port, () => console.log('Listening on port 3000'));
+app.listen(port, () => console.log('Listening on port ' + port));
