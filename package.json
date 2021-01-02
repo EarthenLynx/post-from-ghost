@@ -1,10 +1,10 @@
 {
-  "name": "webhook-test",
+  "name": "post-from-ghost",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js && pm2 monit",
+    "start": "pm2 start index.js -n Ghostposter9000 && pm2 monit",
     "dev": "nodemon index"
   },
   "author": "",
