@@ -11,8 +11,8 @@ router.post('/', async (req, res) => {
 	// Build up the payload for the api
 	const { title, html, feature_image, tags, url } = req.body.post.current;
 	let markdown = turndownService.turndown(html);
-	markdown += `\n > Post originally published at ${url}`;
-	markdown += `\n If you enjoyed reading, follow me on Twitter 🐤 [@qbitme](https://twitter.com/qbitme)`;
+	markdown += `\n> This post was originally published at ${url}`;
+	markdown += `\nThank you for reading. If you enjoyed this article, let's stay in touch on Twitter 🐤 [@qbitme](https://twitter.com/qbitme)`;
 	const body = JSON.stringify({
 		article: {
 			title: title,
