@@ -10,7 +10,9 @@ router.post('/', async (req, res) => {
 
 	// Build up the payload for the api
 	const { title, html, feature_image, tags, url } = req.body.post.current;
-	const markdown = turndownService.turndown(html);
+	let markdown = turndownService.turndown(html);
+	markdown += `\n > Post originally published at ${url}`;
+	markdown += `\n If you enjoyed reading, follow me on Twitter 🐤 [@qbitme](https://twitter.com/qbitme)`;
 	const body = JSON.stringify({
 		article: {
 			title: title,
@@ -27,16 +29,15 @@ router.post('/', async (req, res) => {
 
 	// Do error handlung
 	if (response.status !== 201) {
-    const e = await response.json();
-    console.log(`Something went wrong: ${e.error}`)
-    // If everything went well, send a confirmation response
+		const e = await response.json();
+		console.log(`Something went wrong: ${e.error}`);
+		// If everything went well, send a confirmation response
 	} else {
 		const data = await response.json();
-		console.log('Post created');
-		console.log(data);
+		console.log(`Post created successfully and available under ${data.url}`);
 	}
 
-	// If everything went well, send a message back to the server
+	// In any way, send a message to the webhook to stop sending
 	res.status(200).send('stop');
 });
 
